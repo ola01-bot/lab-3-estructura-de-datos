@@ -128,3 +128,19 @@ Sun Sep 13 05:36:56 AM UTC 2026:
  tests:  5|4
 total_score: 20/60
 62c89f7
+Sun Sep 13 05:55:48 AM UTC 2026: 
+ hashmap.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘searchMap’:
+hashmap.c:91:16: error: implicit declaration of function ‘has’; did you mean ‘hash’? [-Wimplicit-function-declaration]
+   91 |     long pos = has(key, map->capacity);
+      |                ^~~
+      |                hash
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:110:9: error: suggest parentheses around assignment used as truth value [-Werror=parentheses]
+  110 |     if (encontrado = NULL) {
+      |         ^~~~~~~~~~
+cc1: all warnings being treated as errors
+322c01c

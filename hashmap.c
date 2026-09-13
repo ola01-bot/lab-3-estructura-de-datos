@@ -88,8 +88,14 @@ void insertMap(HashMap * map, char * key, void * value) {
 // Recuerde actualizar el índice current a la posición encontrada. Recuerde que el arreglo es circular.
 
 Pair * searchMap(HashMap * map,  char * key) {   
-
-
+    long pos = has(key, map->capacity);
+    while (map->buckets[pos] != NULL) {
+        if (map->buckets[pos]->key != NULL && is_equal(map->buckets[pos]->key, key)) {
+            map->current = pos;
+            return map->buckets[pos];
+        }
+        pos = (pos + 1) % map->capacity;
+    }
     return NULL;
 }
 
@@ -99,9 +105,13 @@ Pair * searchMap(HashMap * map,  char * key) {
 // No elimine el par, sólo invalídelo asignando NULL a la clave (pair->key=NULL). 
 // Recuerde actualizar la variable size.
 
-void eraseMap(HashMap * map,  char * key) {    
-
-
+void eraseMap(HashMap * map,  char * key) {   
+    Pair *encontrado = searchMap(map, key);
+    if (encontrado = NULL) {
+        return;
+    }
+    encontrado->key = NULL;
+    map->size = map->size - 1;
 }
 
 // 5. Implemente las funciones para recorrer la estructura: Pair * firstMap(HashMap * map) retorna el primer Pair válido del arreglo buckets. 
