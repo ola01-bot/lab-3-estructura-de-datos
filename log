@@ -21,3 +21,40 @@ Sun Sep 13 05:26:03 AM UTC 2026:
  tests:  1|6
 total_score: 5/60
 4c9f52b
+Sun Sep 13 05:34:34 AM UTC 2026: 
+ hashmap.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:66:16: error: implicit declaration of function ‘has’; did you mean ‘hash’? [-Wimplicit-function-declaration]
+   66 |     long pos = has(key, map->capacity);
+      |                ^~~
+      |                hash
+hashmap.c:73:14: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘bucket’; did you mean ‘buckets’?
+   73 |     if (map->bucket[pos] == NULL) {
+      |              ^~~~~~
+      |              buckets
+hashmap.c:74:40: error: implicit declaration of function ‘_strdup’; did you mean ‘strdup’? [-Wimplicit-function-declaration]
+   74 |         map->buckets[pos] = createPair(_strdup(key), value);
+      |                                        ^~~~~~~
+      |                                        strdup
+hashmap.c:74:40: error: passing argument 1 of ‘createPair’ makes pointer from integer without a cast [-Wint-conversion]
+   74 |         map->buckets[pos] = createPair(_strdup(key), value);
+      |                                        ^~~~~~~~~~~~
+      |                                        |
+      |                                        int
+hashmap.c:21:27: note: expected ‘char *’ but argument is of type ‘int’
+   21 | Pair * createPair( char * key,  void * value) {
+      |                    ~~~~~~~^~~
+hashmap.c:76:34: error: wrong type argument to unary minus
+   76 |         map->buckets[pos]->key = -strdup(key);
+      |                                  ^
+test.c: At top level:
+test.c:9:8: error: conflicting types for ‘_strdup’; have ‘char *(const char *)’
+    9 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+hashmap.c:74:40: note: previous implicit declaration of ‘_strdup’ with type ‘int()’
+   74 |         map->buckets[pos] = createPair(_strdup(key), value);
+      |                                        ^~~~~~~
+4f89065
