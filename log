@@ -91,3 +91,34 @@ hashmap.c:74:40: note: previous implicit declaration of ‘_strdup’ with type 
    74 |         map->buckets[pos] = createPair(_strdup(key), value);
       |                                        ^~~~~~~
 87fc35c
+Sun Sep 13 05:36:08 AM UTC 2026: 
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:66:16: error: implicit declaration of function ‘has’; did you mean ‘hash’? [-Wimplicit-function-declaration]
+   66 |     long pos = has(key, map->capacity);
+      |                ^~~
+      |                hash
+hashmap.c:74:41: error: implicit declaration of function ‘_strdup’; did you mean ‘strdup’? [-Wimplicit-function-declaration]
+   74 |         map->buckets[pos] = createPair( _strdup(key), value);
+      |                                         ^~~~~~~
+      |                                         strdup
+hashmap.c:74:41: error: passing argument 1 of ‘createPair’ makes pointer from integer without a cast [-Wint-conversion]
+   74 |         map->buckets[pos] = createPair( _strdup(key), value);
+      |                                         ^~~~~~~~~~~~
+      |                                         |
+      |                                         int
+hashmap.c:21:27: note: expected ‘char *’ but argument is of type ‘int’
+   21 | Pair * createPair( char * key,  void * value) {
+      |                    ~~~~~~~^~~
+hashmap.c:76:32: error: assignment to ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   76 |         map->buckets[pos]->key = _strdup(key);
+      |                                ^
+test.c: At top level:
+test.c:9:8: error: conflicting types for ‘_strdup’; have ‘char *(const char *)’
+    9 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+hashmap.c:74:41: note: previous implicit declaration of ‘_strdup’ with type ‘int()’
+   74 |         map->buckets[pos] = createPair( _strdup(key), value);
+      |                                         ^~~~~~~
+910a0f8
