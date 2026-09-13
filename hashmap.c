@@ -163,7 +163,7 @@ map->buckets = (Pair **) calloc(map->capacity, sizeof(Pair *));
 map->size = 0;
 long i = 0; 
 while(i < old_capacity) {
-if(old_buckets[i] != NULL && old_buckets[i]->key != NULL)
+if(old_buckets[i] != NULL && old_buckets[i]->key != NULL) {
 insertMap(map, old_buckets[i]->key, old_buckets[i]->value);
   }
   i = i + 1;
