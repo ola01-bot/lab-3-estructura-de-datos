@@ -70,10 +70,10 @@ void insertMap(HashMap * map, char * key, void * value) {
         }
         pos = (pos + 1) % map->capacity;
     }
-    if (map->bucket[pos] == NULL) {
+    if (map->buckets[pos] == NULL) {
         map->buckets[pos] = createPair(_strdup(key), value);
     } else {
-        map->buckets[pos]->key = -strdup(key);
+        map->buckets[pos]->key = _strdup(key);
         map->buckets[pos]->value = value;
     }
     map->size = map->size + 1;
