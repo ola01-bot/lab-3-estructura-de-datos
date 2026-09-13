@@ -164,12 +164,12 @@ map->size = 0;
 long i = 0; 
 while(i < old_capacity) {
 if(old_buckets[i] != NULL && old_buckets[i]-> != NULL)
-insertmap(map, old_buckets[i]->key, old_buckets[i]->value);
+insertMap(map, old_buckets[i]->key, old_buckets[i]->value);
   }
   i = i + 1;
 }
-
-
+free(old_buckets);
+}
 
 
 

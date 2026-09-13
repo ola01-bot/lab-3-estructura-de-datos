@@ -180,3 +180,28 @@ hashmap.c:167:1: error: implicit declaration of function ‘insertmap’; did yo
       | ^~~~~~~~~
       | insertMap
 c70509a
+Sun Sep 13 06:14:38 AM UTC 2026: 
+ hashmap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:166:47: error: expected identifier before ‘!=’ token
+  166 | if(old_buckets[i] != NULL && old_buckets[i]-> != NULL)
+      |                                               ^~
+hashmap.c: At top level:
+hashmap.c:171:1: error: data definition has no type or storage class [-Werror]
+  171 | free(old_buckets);
+      | ^~~~
+hashmap.c:171:1: error: type defaults to ‘int’ in declaration of ‘free’ [-Wimplicit-int]
+hashmap.c:171:1: error: parameter names (without types) in function declaration [-Wdeclaration-missing-parameter-type]
+hashmap.c:171:1: error: conflicting types for ‘free’; have ‘int()’
+In file included from test.c:2:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h:687:13: note: previous declaration of ‘free’ with type ‘void(void *)’
+  687 | extern void free (void *__ptr) __THROW;
+      |             ^~~~
+hashmap.c:172:1: error: expected identifier or ‘(’ before ‘}’ token
+  172 | }
+      | ^
+cc1: all warnings being treated as errors
+ffbca98
